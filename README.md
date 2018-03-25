@@ -1,5 +1,5 @@
-SocketCluster Sample App
+BudgetMe Application
 ======
 
-This is a sample SocketCluster app.
+more to come.
 
