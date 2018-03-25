@@ -8,6 +8,13 @@
       "email": "jason8ni@hotmail.com"
     }
   ],
+  "_moduleAliases": {
+    "@root": ".",
+    "@Budget": "./services/budgetAPI",
+    "@Models":"./services/budgetAPI/app/models",
+    "@budgetAPI":"./services/budgetAPI/config/app.js",
+    "@config": "./services/budgetAPI/config/index.js"
+  },
   "dependencies": {
     "bcrypt": "^1.0.3",
     "body-parser": "^1.18.2",

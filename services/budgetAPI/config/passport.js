@@ -2,7 +2,7 @@ const PassJWT = require('passport-jwt'),
     ExtractJWT = PassportJWT.ExtractJwt,
     Strategy = PassportJWT.Strategy,
     config = require('./index.js'),
-    models = require('./../../../models/index');
+    models = require('./../app/models/index');
 
 module.exports = (passport) => {
     const User = models.Users;
@@ -17,5 +17,5 @@ module.exports = (passport) => {
             if (err) { return finish(err, false) }
             if (user) { return finish(null, user) }
         })
-    })
+    }))
 }
