@@ -1,7 +1,7 @@
 const mongoose = require('mongoose'),
     bcrypt = require('bcrypt')
 
-const schema = mongoose.schema({
+const Schema = mongoose.Schema({
     username: {
         type: String,
         unique: true,
@@ -39,12 +39,5 @@ Schema.pre('save', (next) => {
         });
     }
 
-    mongoose.model('User', Schema)
-
-
-
-
-
-
-
 });
+mongoose.model('User', Schema);
