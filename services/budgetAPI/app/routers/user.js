@@ -3,10 +3,10 @@ const models = require('@Budget/app/setup'),
     config = require('@config');
 
 module.exports = (app) => {
-    const api = app.budgetAPI.app.api.authentication;
+    const api = app.budgetAPI.app.api.user;
 
     app.route('/api/v1/setup')
-        .post(api.createUser(models.User))
+        .post(api.setup(models.User))
 
     app.route('/api/v1/users')
         .get(passport.authenticate('jwt', config.session),

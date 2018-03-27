@@ -2,7 +2,7 @@ const mongoose = require("mongoose")
 
 const api = {};
 
-api.createUser = (User) => (req, res) => {
+api.setup = (User) => (req, res) => {
     const admin = new User({
         username: 'admin',
         password: 'admin',
@@ -19,7 +19,7 @@ api.createUser = (User) => (req, res) => {
 
 };
 
-api.index = (User, token) => (res, req) => {
+api.index = (User, token) => (req, res) => {
     if (token) {
         User.find({}, (err, users) => {
             if (err) { throw err };
@@ -30,7 +30,7 @@ api.index = (User, token) => (res, req) => {
     }
 }
 
-api.signup = (User) => (res, req) => {
+api.signup = (User) => (req, res) => {
     if (!req.body.username && req.body.password) {
         res.json({ success: false, message: "Missing username" })
     } else if (!req.body.password && req.body.username) {

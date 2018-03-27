@@ -20,10 +20,10 @@ app.use(passport.initialize());
 
 app.set('mySecret', config.secret);
 
-consign({cwd:'services'})
-.include('budgetAPI/app/setup')
-.then('budgetAPI/app/api')
-.then('budgetAPI/app/routers')
-.into(app);
+consign({ cwd: 'services' })
+    .include('budgetAPI/app/setup')
+    .then('budgetAPI/app/api')
+    .then('budgetAPI/app/routers')
+    .into(app);
 
 module.exports = app;
