@@ -19,15 +19,38 @@ api.createUser = (User) => (req, res) => {
 
 };
 
-api.index = (User, token) =>(res,req) =>{
-    if(token) {
-        User.find({}, (err, users)=>{
-            if(err) {throw err};
+api.index = (User, token) => (res, req) => {
+    if (token) {
+        User.find({}, (err, users) => {
+            if (err) { throw err };
             res.status(200).json(users);
         });
     } else {
-        return res.status(403).send({success:false, message: "You are not authorized to view this"})
+        return res.status(403).send({ success: false, message: "You are not authorized to view this" })
     }
 }
+
+api.signup = (User) => (res, req) => {
+    if (!req.body.username && req.body.password) {
+        res.json({ success: false, message: "Missing username" })
+    } else if (!req.body.password && req.body.username) {
+        res.json({ success: false, message: "Missing password" })
+    }
+    else if (!req.body.username && !req.body.password) {
+        res.json({ success: false, message: "Please pass both a username and a passowrd" })
+    } else {
+        const user = new User({
+            username: req.body.username,
+            password: req.body.password,
+            clients: []
+        })
+
+        user.save((err) => {
+            if (err) { return res.status(400).json({ success: false, message: "User already exists" }) }
+            return res.status(400).json({ success: true, message: "User successfully created" })
+        })
+    }
 }
+
+module.exports = api;
 
