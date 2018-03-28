@@ -6,15 +6,16 @@ const api = {};
 
 api.login = (User) => (req, res) => {
     User.findOne({ username: req.body.username }, (err, user) => {
+        console.log(req.body.username)
         if (err) throw error;
         if (!user) res.status(401).send({ success: false, message: "Failed to authenticate, the User was not found. Please try again" })
         else {
-            user.comparePassword(req.body.password, (err, match) => {
+            user.checkPass(req.body.password, (err, match) => {
                 if (match && !err) {
                     const token = jwt.sign({ user }, config.secret);
                     res.json({ success: true, message: "User authenticated", token });
                 } else {
-                    res.status(401).send({ success: false, massage: "Fail   ed to authenticated, the password was incorrect." })
+                    res.status(401).send({ success: false, massage: "Failed to authenticated, the password was incorrect." })
                 }
             })
         }

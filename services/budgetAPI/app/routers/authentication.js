@@ -6,6 +6,6 @@ module.exports = (app) => {
     app.route('/')
         .get((req, res) => res.send("API"));
 
-    app.route('.api/v1/authentication')
+    app.route('/api/v1/authentication')
         .post(api.login(models.User));
 }

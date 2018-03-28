@@ -4,6 +4,7 @@ const api = {};
 
 api.setup = (User) => (req, res) => {
     const admin = new User({
+        //Only used during development... Will remove once app is built...
         username: 'admin',
         password: 'admin',
         clients: []
@@ -13,7 +14,7 @@ api.setup = (User) => (req, res) => {
         if (err) { throw err };
         console.log('Admin acct successfully created');
 
-        res.json({ success: true, message: "Admint acct successfully set up!" })
+        res.json({ success: true, message: "Admin acct successfully set up!" })
     })
 
 

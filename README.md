@@ -16,3 +16,11 @@ Open another comman prompt, navigate to same directory.
 Type:
 
 >mongo.exe
+
+Postman:
+
+When sending post requests:
+
+Body:
+
+> click x-www-form-urlencoded...
