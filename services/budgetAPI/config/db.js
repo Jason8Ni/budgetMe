@@ -3,9 +3,11 @@ module.exports = (mongoose, config) => {
 
     mongoose.Promise = Promise;
 
-    mongoose.connect(config.db, {
-        useMongoClient: true,
-        promiseLibrary: global.Promise
+    mongoose.connect(config.database, {
+        promiseLibrary: global.Promise,
+        socketTimeoutMS: 30000,
+        keepAlive: true,
+        reconnectTries: 30000
     });
 
     db.on('error', err => console.log(`Connection to db failed: ${err}`));

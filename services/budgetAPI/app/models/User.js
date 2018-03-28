@@ -14,7 +14,7 @@ const Schema = mongoose.Schema({
     clients:[{}]
 });
 
-Schema.pre('save', (next) => {
+Schema.pre('save', function(next) {
     const user = this;
 
     if (this.isModified('password') || this.isNew) {

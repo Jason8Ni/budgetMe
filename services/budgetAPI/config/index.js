@@ -1,5 +1,5 @@
 module.exports = {
     secret : 'mySecret', 
     session : {session: false},
-    database: 'mongodb://localhost:27017'
+    database: 'mongodb://127.0.0.1:27017/'
 }
