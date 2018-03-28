@@ -10,6 +10,7 @@ api.login = (User) => (req, res) => {
         if (err) throw error;
         if (!user) res.status(401).send({ success: false, message: "Failed to authenticate, the User was not found. Please try again" })
         else {
+            console.log(user)
             user.checkPass(req.body.password, (err, match) => {
                 if (match && !err) {
                     const token = jwt.sign({ user }, config.secret);

@@ -10,11 +10,11 @@ const Schema = mongoose.Schema({
     password: {
         type: String,
         required: true
-    }, 
-    clients:[{}]
+    },
+    clients: [{}]
 });
 
-Schema.pre('save', function(next) {
+Schema.pre('save', function (next) {
     const user = this;
 
     if (this.isModified('password') || this.isNew) {
@@ -31,14 +31,15 @@ Schema.pre('save', function(next) {
     } else {
         return next();
     }
+});
 
-    Schema.methods.checkPass = (pass, cb) => {
-        bcrypt.compare(password, this.password, (err, match) => {
+    Schema.methods.checkPass = function(pass, cb) {
+        bcrypt.compare(pass, this.password, (err, match) => {
             if (err) { return cb(err) };
             cb(null, match);
 
         });
     }
 
-});
+
 mongoose.model('User', Schema);
