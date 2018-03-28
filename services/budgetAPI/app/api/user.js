@@ -32,25 +32,27 @@ api.index = (User, token) => (req, res) => {
 }
 
 api.signup = (User) => (req, res) => {
-    if (!req.body.username && req.body.password) {
-        res.json({ success: false, message: "Missing username" })
-    } else if (!req.body.password && req.body.username) {
-        res.json({ success: false, message: "Missing password" })
-    }
-    else if (!req.body.username && !req.body.password) {
-        res.json({ success: false, message: "Please pass both a username and a passowrd" })
-    } else {
-        const user = new User({
-            username: req.body.username,
-            password: req.body.password,
-            clients: []
-        })
+    if (req.body.email && req.body.username && req.body.password && req.body.passwordConf) {
+        if (req.body.password === req.body.passwordConf) {
+            const user = new User({
+                email : req.body.email,
+                username: req.body.username,
+                password: req.body.password,
+                clients: []
+            })
 
-        user.save((err) => {
-            if (err) { return res.status(400).json({ success: false, message: "User already exists" }) }
-            return res.status(400).json({ success: true, message: "User successfully created" })
-        })
+            user.save((err) => {
+                if (err) { return res.status(400).json({ success: false, message: "User already exists" }) }
+                return res.status(400).json({ success: true, message: "User successfully created" })
+            })
+        } else {
+            res.json({ success: false, message: "Passwords are not equal" })
+        }
+
+    } else {
+        res.json({ success: false, message: "Please make sure all required fields are filled in" })
     }
+
 }
 
 module.exports = api;
