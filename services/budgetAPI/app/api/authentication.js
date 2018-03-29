@@ -71,6 +71,9 @@ api.resetPass = (User) => (req, res) => {
 
     })
 }
+//Have to implement this section... Figure out how to structure these methods...
+//One get method used to load/verify if the token is right
+// while another one used in a post call will actually change the password 
 /*
 app.post('/reset/:token', function(req, res) {
     async.waterfall([
