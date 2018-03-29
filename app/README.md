@@ -1,6 +1,8 @@
 # budgetme
 
-> A node.js/vue/express project w/ a mongodb backend
+> A node.js/vue/express project w/ a mongodb backend. The front end portion for my application. 
+
+More to come...
 
 ## Build Setup
 
