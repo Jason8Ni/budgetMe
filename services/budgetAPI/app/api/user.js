@@ -1,12 +1,13 @@
-const mongoose = require("mongoose")
+const mongoose = require("mongoose"),
+config = require("@config");
 
 const api = {};
 
 api.setup = (User) => (req, res) => {
     const admin = new User({
         //Only used during development... Will remove once app is built...
-        username: 'admin',
-        password: 'admin',
+        username: config.adminUser,
+        password: config.adminPass,
         clients: []
     })
 
