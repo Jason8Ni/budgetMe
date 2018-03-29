@@ -1,2 +1,3 @@
 /node_modules/
 config.json
+/services/budgetAPI/config/index.js
