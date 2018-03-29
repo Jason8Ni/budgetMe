@@ -12,7 +12,7 @@ api.login = (User) => (req, res) => {
         else {
             // console.log(user)
             user.checkPass(req.body.password, (err, match) => {
-                if (match === true && !err) {
+                if (match && !err) {
                     const token = jwt.sign({ user }, config.secret);
                     res.json({ success: true, message: "User authenticated", token });
                 } else {

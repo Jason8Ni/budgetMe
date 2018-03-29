@@ -22,8 +22,7 @@ const Schema = mongoose.Schema({
     },
     //don't think I need this part but will figure out later....
     passwordConf: {
-        type: String,
-        required: true,
+        type: String
     },
     resetPasswordToken: String,
     resetPasswordExpireDate: Date,

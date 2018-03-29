@@ -42,8 +42,9 @@ api.signup = (User) => (req, res) => {
             })
 
             user.save((err) => {
-                if (err) { return res.status(400).json({ success: false, message: "User already exists" }) }
-                return res.status(400).json({ success: true, message: "User successfully created" })
+                console.log('***' + err);
+                if (err) { res.status(400).json({ success: false, message: "User already exists" }) }
+                res.status(200).json({ success: true, message: "User successfully created" })
             })
         } else {
             res.json({ success: false, message: "Passwords are not equal" })
