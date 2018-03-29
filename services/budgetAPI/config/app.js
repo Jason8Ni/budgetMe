@@ -21,8 +21,7 @@ app.use(bodyParser.json());
 app.use(morgan('dev'));
 app.use(cors());
 app.use(cookieParser());
-app.use(favicon());
-app.use(session({secret: config.sessionSecret}));
+app.use(session({ secret: 'keyboard cat', resave: true, saveUninitialized: true }));
 app.use(passport.initialize());
 app.use(passport.session())
 

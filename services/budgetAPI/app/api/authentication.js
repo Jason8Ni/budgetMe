@@ -54,7 +54,7 @@ api.resetPass = (User) => (req, res) => {
                     res.status(400).json({ success: false, message: "Message failed to send" })
                 }
 
-                res.json({ success = true, message: "Password reset" })
+                res.json({ success : true, message: "Password reset" })
             })
 
         }
