@@ -40,25 +40,14 @@ api.signup = (User) => (req, res) => {
                 password: req.body.password,
                 clients: []
             })
-            User.findOne({ username: req.body.username }, (err, user) => {
-                if (err) { throw error; }
-                if (user) {
-                    res.status(400).json({ success: false, message: "User already exists" });
+            console.log(1234);
+            user.save((err) => {
+                //console.log('***' + err);
+                if (err) { res.status(400).send({ success: false, message: "User already exists" }) }
+                else {
+                    res.json({ success: true, message: "User successfully created" })
                 }
             })
-
-            User.findOne({ email: req.body.email }, (err, user) => {
-                    if (err) { throw error; }
-                    if (user) {
-                        res.status(400).json({ success: false, message: "Email already used" });
-                    }
-                })
-
-            user.save((err) => {
-                    console.log('***' + err);
-                    if (err) { res.status(400).json({ success: false, message: "User already exists" }) }
-                    res.status(200).json({ success: true, message: "User successfully created" })
-                })
         } else {
             res.json({ success: false, message: "Passwords are not equal" })
         }
