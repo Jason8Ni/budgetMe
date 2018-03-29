@@ -2,7 +2,7 @@ const mongoose = require('mongoose'),
     bcrypt = require('bcrypt'),
     crypto = require('crypto'),
     config = require("@config"),
-    nodemailer = require('nodemailer'), ;
+    nodemailer = require('nodemailer');
 
 const Schema = mongoose.Schema({
     email: {
@@ -64,7 +64,7 @@ Schema.methods.genResetPassToken = function (cb) {
     })
 }
 
-Schema.methods.sendResetEmail = function (token, user, cb) => {
+Schema.methods.sendResetEmail = function (token, user, cb) {
     var smtpTransport = nodemailer.createTransport('SMTP', {
         service: 'SendGrid',
         auth: {

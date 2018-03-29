@@ -8,4 +8,7 @@ module.exports = (app) => {
 
     app.route('/api/v1/authentication')
         .post(api.login(models.User));
+
+    app.route('/api/v1/resetPassword')
+        .post(api.resetPass(models.User))
 }
