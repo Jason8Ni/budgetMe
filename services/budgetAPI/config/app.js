@@ -12,7 +12,9 @@ const express = require('express'),
     database = require('./db')(mongoose, config),
     favicon = require('static-favicon'),
     path = require('path'),
-    cookieParser = require('cookie-parser');
+    cookieParser = require('cookie-parser'),
+    session = require('express-session'),
+    crypto = require('crypto');
 
 app.use(express.static('.'));
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -21,7 +23,12 @@ app.use(morgan('dev'));
 app.use(cors());
 app.use(cookieParser());
 app.use(favicon());
+app.use(session({secret: config.sessionSecret}));
 app.use(passport.initialize());
+app.use(passport.session())
+
+
+
 
 app.set('mySecret', config.secret);
 app.set('view enginer', 'jade')
