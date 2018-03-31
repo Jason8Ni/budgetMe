@@ -49,31 +49,51 @@ api.resetPassToken = (User) => (req, res) => {
                 if (err) { res.status(400).json({ success: false, message: "Token not saved" }) }
             })
 
-            user.sendResetEmail((err, result) => {
-                if (err) {
-                    res.status(400).json({ success: false, message: "Message failed to send" })
-                }
+        });
+        var url = 'http://' + req.headers.host + '/reset/' + token;
 
-                res.json({ success: true, message: "Password reset" })
-            })
+        User.sendResetEmail(url, user, (err, msg, result) => {
+            if (err) {
+                res.status(400).json({ success: false, message: "Message failed to send. The msg associated with the error is: " + msg })
+            }
 
-        }
-        );
+            res.json({ success: true, message: "Password reset" })
+        })
     })
+
+
 }
 
-api.verifyToken = (User) => (req, res) => {
-    User.findOne({ resetPasswordToken: req.body.token }, (err, pass) => {
+
+api.resetPass = (User) => (req, res) => {
+
+    User.findOne({ resetPasswordToken: req.body.token }, (err, user) => {
         if (!user) {
             res.status(400).send({ success: false, message: "Token is invalid." });
         }
 
         if (Date.now() >= user.resetPasswordExpireDate) {
             res.status(400).send({ success: false, message: "Token is expired." });
-
         }
-        
+
+        user.password = req.body.password;
+        user.resetPasswordToken = undefined;
+        user.resetPasswordExpireDate = undefined;
+
+        user.save((err) => {
+            //console.log('***' + err);
+            if (err) { res.status(400).send({ success: false, message: "Password not reset" }) }
+        })
     })
+
+    User.sendNewPassEmail((err, result) => {
+        if (err) {
+            res.status(400).json({ success: false, message: "Message failed to send" })
+        }
+
+        res.json({ success: true, message: "Password reset" })
+    })
+
 }
 
 
