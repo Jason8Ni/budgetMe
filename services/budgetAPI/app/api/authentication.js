@@ -64,7 +64,10 @@ api.resetPassToken = (User) => (req, res) => {
 
 }
 
-
+// should figure out pathing for each of the pages/ how to create a pipeline of page requests, 
+// e.g. reset page to redirect to home page etc...
+// done thru routers page.
+//connection to front end too...
 api.resetPass = (User) => (req, res) => {
 
     User.findOne({ resetPasswordToken: req.body.token }, (err, user) => {
@@ -84,14 +87,14 @@ api.resetPass = (User) => (req, res) => {
             //console.log('***' + err);
             if (err) { res.status(400).send({ success: false, message: "Password not reset" }) }
         })
-    })
 
-    User.sendNewPassEmail((err, result) => {
-        if (err) {
-            res.status(400).json({ success: false, message: "Message failed to send" })
-        }
+        User.sendResetEmail(user, (err, msg, result) => {
+            if (err) {
+                res.status(400).json({ success: false, message: "Message failed to send. The msg associated with the error is: " + msg })
+            }
 
-        res.json({ success: true, message: "Password reset" })
+            res.json({ success: true, message: "Password reset" })
+        })
     })
 
 }
