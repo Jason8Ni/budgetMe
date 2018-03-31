@@ -2,7 +2,8 @@ const mongoose = require('mongoose'),
     bcrypt = require('bcrypt'),
     crypto = require('crypto'),
     config = require("@config"),
-    nodemailer = require('nodemailer');
+    nodemailer = require('nodemailer'),
+    email = require('emailjs');
 
 const Schema = mongoose.Schema({
     email: {
@@ -64,6 +65,8 @@ Schema.methods.genResetPassToken = function (cb) {
 }
 
 //may change to ue google smtp...
+//https://stackoverflow.com/questions/17055983/how-do-i-send-email-from-my-gmail-account-in-my-node-js-script
+//
 Schema.methods.sendResetEmail = function (token, user, cb) {
     var smtpTransport = nodemailer.createTransport('SMTP', {
         service: 'SendGrid',
