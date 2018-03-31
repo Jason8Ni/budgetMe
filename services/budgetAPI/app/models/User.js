@@ -59,10 +59,11 @@ Schema.methods.checkPass = function (pass, cb) {
 Schema.methods.genResetPassToken = function (cb) {
     crypto.randomBytes(config.byteNum, (err, buf) => {
         var token = buf.toString('hex');
-        cb(err, token);
+        cb(err, token); 
     })
 }
 
+//may change to ue google smtp...
 Schema.methods.sendResetEmail = function (token, user, cb) {
     var smtpTransport = nodemailer.createTransport('SMTP', {
         service: 'SendGrid',

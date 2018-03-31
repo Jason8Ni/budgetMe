@@ -43,7 +43,7 @@ api.resetPassToken = (User) => (req, res) => {
                 res.status(401).send({ success: false, message: "Token was not generated" });
             }
             user.resetPasswordToken = token;
-            user.resetPasswordExpires = Date.now() + 3600000; //1 hr
+            user.resetPasswordExpireDate = Date.now() + 3600000; //1 hr
 
             user.save((err) => {
                 if (err) { res.status(400).json({ success: false, message: "Token not saved" }) }
@@ -54,7 +54,7 @@ api.resetPassToken = (User) => (req, res) => {
                     res.status(400).json({ success: false, message: "Message failed to send" })
                 }
 
-                res.json({ success : true, message: "Password reset" })
+                res.json({ success: true, message: "Password reset" })
             })
 
         }
@@ -62,15 +62,21 @@ api.resetPassToken = (User) => (req, res) => {
     })
 }
 
-api.resetPass = (User) => (req, res) => {
-    User.findOne({resetPasswordToken: req.body.token, resetPasswordExpires: { $gt: Date.now() }}, (err, pass)=> {
-        if(!user) {
-            res.status(400).send({success: false, message: "Token is invalid or has expired."});
+api.verifyToken = (User) => (req, res) => {
+    User.findOne({ resetPasswordToken: req.body.token }, (err, pass) => {
+        if (!user) {
+            res.status(400).send({ success: false, message: "Token is invalid." });
         }
 
+        if (Date.now() >= user.resetPasswordExpireDate) {
+            res.status(400).send({ success: false, message: "Token is expired." });
 
+        }
+        
     })
 }
+
+
 //Have to implement this section... Figure out how to structure these methods...
 //One get method used to load/verify if the token is right
 // while another one used in a post call will actually change the password 
