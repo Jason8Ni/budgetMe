@@ -27,6 +27,7 @@
     "emailjs": "^2.0.0",
     "express": "^4.14.0",
     "express-session": "^1.15.6",
+    "gulp": "^3.9.1",
     "jsonwebtoken": "^8.2.0",
     "minimist": "1.1.0",
     "module-alias": "^2.0.6",
@@ -36,6 +37,7 @@
     "passport": "^0.4.0",
     "passport-jwt": "^4.0.0",
     "passport-local": "^1.0.0",
+    "puglatizer": "^1.1.9",
     "sc-errors": "^1.4.0",
     "sc-framework-health-check": "^2.0.0",
     "sc-hot-reboot": "^1.0.0",
@@ -43,6 +45,15 @@
     "serve-static": "1.11.2",
     "socketcluster": "^11.1.0",
     "socketcluster-client": "^11.0.0"
+  },
+  "devDependencies": {
+    "gulp": "latest",
+    "gulp-util": "latest",
+    "gulp-sass": "latest",
+    "gulp-coffee": "latest",
+    "gulp-uglify": "latest",
+    "gulp-concat": "latest",
+    "gulp-connect": "latest"
   },
   "keywords": [
     "websocket",

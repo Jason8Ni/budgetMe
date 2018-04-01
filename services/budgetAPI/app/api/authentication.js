@@ -68,6 +68,7 @@ api.resetPassToken = (User) => (req, res) => {
 // e.g. reset page to redirect to home page etc...
 // done thru routers page.
 //connection to front end too...
+//http://sahatyalkabov.com/how-to-implement-password-reset-in-nodejs/
 api.resetPass = (User) => (req, res) => {
 
     User.findOne({ resetPasswordToken: req.body.token }, (err, user) => {
