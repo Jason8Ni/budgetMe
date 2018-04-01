@@ -45,6 +45,7 @@
     "serve-static": "1.11.2",
     "socketcluster": "^11.1.0",
     "socketcluster-client": "^11.0.0"
+
   },
   "devDependencies": {
     "gulp": "latest",
@@ -53,9 +54,7 @@
     "gulp-connect": "latest",
     "gulp-sass": "latest",
     "gulp-uglify": "latest",
-    "gulp-util": "latest",
-    "node-sass": "^4.8.3",
-    "sass-loader": "^6.0.7"
+    "gulp-util": "latest"
   },
   "keywords": [
     "websocket",
