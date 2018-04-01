@@ -3,7 +3,8 @@ var express = require("express"),
 	bodyParser = require("body-parser"),
 	parseUrlencoded = bodyParser.urlencoded({ extended:false }),
 	async = require('async'),
-    pool = process.pool
+	pool = process.pool, 
+	authentication = require('../')
     
 import Authentication from '@/components/pages/Authentication/Authentication'
 
