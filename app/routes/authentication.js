@@ -3,10 +3,9 @@ var express = require("express"),
 	bodyParser = require("body-parser"),
 	parseUrlencoded = bodyParser.urlencoded({ extended:false }),
 	async = require('async'),
-	pool = process.pool, 
-	authentication = require('../')
+	pool = process.pool;
     
-import Authentication from '@/components/pages/Authentication/Authentication'
+//import Authentication from '@/components/pages/Authentication/Authentication'
 
 // Session Middleware
 router.use(function(req,res,next) {
