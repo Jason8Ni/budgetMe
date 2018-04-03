@@ -32,5 +32,13 @@
       ) {{ message}}   
 </template>
 <script>
-export default {};
+import Authentication from "@components/pages/Authentication";
+export default {
+  data() {
+    return {
+      snackbar: false,
+      validLogin: false
+    };
+  }
+};
 </script>
