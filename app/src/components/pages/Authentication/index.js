@@ -22,20 +22,6 @@ export default {
       })
   },
 
-  signup(component, auth, redirect) {
-    Axios.post(`${api}/api/${version}/signup`, auth)
-      .then(({ data: { token } }) => {
-        component.$cookie.set('token', token, '2D')
-        component.validSignUp = true
-        this.user.authenticated = true
-
-        if (redirect) { router.push(redirect) }
-      }).catch(({ response: { data } }) => {
-        context.snackbar = true
-        context.message = data.message
-      })
-  },
-
   isAuthenticated() {
     const token = document.cookie
 
