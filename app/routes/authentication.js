@@ -1,26 +1,21 @@
-var express = require("express"),
-	router = express.Router(),
-	bodyParser = require("body-parser"),
-	parseUrlencoded = bodyParser.urlencoded({ extended:false }),
-	async = require('async'),
-	pool = process.pool;
-    
+import Vue from 'vue'
+import Router from 'vue-router'
+import * as Auth from '@components/pages/Authentication'
+
 //import Authentication from '@/components/pages/Authentication/Authentication'
 
 // Session Middleware
-router.use(function(req,res,next) {
-  	next()
+Vue.use(router)
+
+export default new Router({
+	routes: [
+		{
+			path: '/login',
+			name: 'Authentication',
+			component: Authentication
+		}
+		
+	]
 })
-
-router.route("/")
-	.get(function(req,res) {
-		res.render('home/index', {
-			ADDRESS:process.env.ADDRESS,
-			PORT:process.env.PORT,
-			ENV:process.env.ENV,
-			MINIFY:process.env.MINIFY
-		})
-
-	})
 
 module.exports = router
