@@ -23,6 +23,13 @@
           )
           v-btn(@click.native="signUpVisible = true") Create accountBox
           v-btn(@click.native="submitAuthentication()") Login
+
+      v-snackbar(
+        timeout ="6000"
+        bottom="bottom"
+        color = "red lighten-1"
+        v-model = "snackbar"
+      ) {{ message}}   
 </template>
 <script>
 export default {};
