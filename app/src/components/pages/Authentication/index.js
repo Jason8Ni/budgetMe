@@ -43,6 +43,10 @@ export default {
       this.user.authenticated = true
     else
       this.user.authenticated = false
-  }, 
+  },
+  
+  getAuthHeader(component) {
+    return `Bearer ${component.$cookie.get('token')}`
+  }
 
 }
