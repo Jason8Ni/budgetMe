@@ -13,7 +13,7 @@
                 div(ng-app="" ng-init="checked = false")
                     form.form-signin(action="" method="post" name="form")
                         label(for="username") Username
-                        input.form-styling(type="text" name="username" placeholder="")
+                        input.form-styling(type="text" name="username" placeholder="" )
                         label(for="password") Password
                         input.form-styling(type="text" name="password" placeholder="")
                         input#checkbox(type="checkbox")
@@ -24,14 +24,16 @@
                             a.btn-signin(@click.native="submitAuthentication()") Sign in
                     form.form-signup(action="" method="post" name="form")
                         label(for="fullname") Full name
-                        input.form-styling(type="text" name="fullname" placeholder="")
+                        input.form-styling(type="text" name="name" placeholder="")
+                        label(for="fullname") Username
+                        input.form-styling(type="text" name="username" placeholder="")
                         label(for="email") Email
                         input.form-styling(type="text" name="email" placeholder="")
                         label(for="password") Password
                         input.form-styling(type="text" name="password" placeholder="")
                         label(for="confirmpassword") Confirm password
                         input.form-styling(type="text" name="confirmpassword" placeholder="")
-                        a.btn-signup(@click.native="submitSignup()",
+                        a.btn-signup(@click.native="submitSignup()"
                                     ng-click="checked = !checked") Sign Up
                     .success
                         svg#check(width="270" height="270" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewbox="0 0 60 60" ng-class="checked ? 'checked' : ''")
@@ -79,6 +81,7 @@ export default {
         password: ""
       },
       newUser: {
+        name:"",
         username: "",
         email: "",
         password: "",
