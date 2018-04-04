@@ -52,5 +52,27 @@
     
 </template>
 <script>
-export default {};
+import Signup from "@components/pages/Signup";
+export default {
+data() {
+    return {
+        snackbar : false, 
+        validSignup : false,
+        signupPasswordVisible: false, 
+        rules: [(value)=>!!value||'This field is required'],
+        newUser: {
+            username: '', 
+            password: '', 
+            passwordConf: '',
+            email: ''
+        },
+        message: '',
+    }
+},
+    methods: {
+        submitSignup () {
+            Signup.signup(this, this.newUser, '/')
+        }
+    }
+};
 </script>

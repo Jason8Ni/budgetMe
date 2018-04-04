@@ -11,7 +11,7 @@ export default {
         Axios.post(`${api}/api/${version}/signup`, auth)
             .then(({ data: { token } }) => {
                 component.$cookie.set('token', token, '2D')
-                component.validSignUp = true
+                component.validSignup = true
                 this.user.authenticated = true
 
                 if (redirect) { router.push(redirect) }

@@ -37,8 +37,21 @@ export default {
   data() {
     return {
       snackbar: false,
-      validLogin: false
-    };
+      validLogin: false, 
+      loginPasswordVisible: false, 
+      rules: [ (value)=> !!value||'This field is required!'],
+      auth : {
+        username: "", 
+        password: ""
+      }, 
+      message : ''
   }
-};
+  
+},
+  methods: {
+    submitAuthentication () {
+      Authentication.authenticate(this, this.auth, `/`)
+    }
+  }
+}
 </script>
