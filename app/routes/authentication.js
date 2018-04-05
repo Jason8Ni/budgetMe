@@ -23,6 +23,7 @@ export default new Router({
 
 	]
 })
+//got to be a better way to route these? AKA more modular... not sure will have to look into
 
 router.beforeEach((to, from, next) => {
 	if (to.meta.requireAuth) {

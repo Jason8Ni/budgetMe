@@ -1,6 +1,7 @@
 import Axios from 'axios'
 import router from '@/router'
 import config from '@config'
+//probably should keep this info in a config and then link to it... smarter idea
 const url = `http://localhost:3001`
 const version = 'v1'
 

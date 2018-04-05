@@ -91,6 +91,10 @@ export default {
     };
   },
   methods: {
+    //from this: https://codepen.io/anon/pen/NYBYrO 
+    //have to incorporate profile picture..
+    //also option to keep me signed in
+    //need signup email... not sure if i have that already
     submitAuthentication() {
       Authentication.authenticate(this, this.auth, `/`);
       $(".btn-animate").toggleClass("btn-animate-grow");
