@@ -67,6 +67,16 @@
       ) {{ message}}   
 </template>
 <script>
+//^^^^^ Replace with vue elements? to be able to select them... Look at eve-app
+//example to see how it was done there in the pug/jade templates...
+/// USING JQUERY IN VUE... I set it up wrong, can't use a cdn:
+//https://stackoverflow.com/questions/37928998/how-to-use-a-jquery-plugin-inside-vue
+//https://vuejsdevelopers.com/2017/05/20/vue-js-safely-jquery-plugin/
+//shouldn't have to ... they really aren't supposed to be used together.
+//Instead: 
+//https://laracasts.com/discuss/channels/vue/help-convert-jquery-to-vuejs-syntax
+//https://stackoverflow.com/questions/42170449/how-to-convert-jquery-ajax-function-to-vue-js
+//https://laravel-news.com/jquery-vue
 import Authentication from "@components/pages/Authentication";
 import Signup from "@components/pages/Signup";
 src = "//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js";
