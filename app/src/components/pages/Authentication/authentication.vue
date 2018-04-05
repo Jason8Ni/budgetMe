@@ -37,21 +37,20 @@ export default {
   data() {
     return {
       snackbar: false,
-      validLogin: false, 
-      loginPasswordVisible: false, 
-      rules: [ (value)=> !!value||'This field is required!'],
-      auth : {
-        username: "", 
+      validLogin: false,
+      loginPasswordVisible: false,
+      rules: [value => !!value || "This field is required!"],
+      auth: {
+        username: "",
         password: ""
-      }, 
-      message : ''
-  }
-  
-},
+      },
+      message: ""
+    };
+  },
   methods: {
-    submitAuthentication () {
-      Authentication.authenticate(this, this.auth, `/`)
+    submitAuthentication() {
+      Authentication.authenticate(this, this.auth, `/`);
     }
   }
-}
+};
 </script>

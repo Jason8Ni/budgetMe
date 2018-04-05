@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h3>Hi! this is our App's Home</h3>
+    <h3>placeholder</h3>
     <ul>
       <li v-if="users != null" v-for="(user, index) in users" :key='index'>
         {{ user.username }}
@@ -11,7 +11,7 @@
 <script>
   import Axios from 'axios'
   import Authentication from '@/components/pages/Authentication'
-const BudgetManagerAPI = `http://localhost:3001`
+const baseUrl = `http://localhost:3001`
 export default {
     data () {
       return {
@@ -22,8 +22,8 @@ export default {
       this.getAllUsers()
     },
     methods: {
-      getAllUsers (context) {
-        Axios.get(`${BudgetManagerAPI}/api/v1/users`, {
+      getAllUsers (component) {
+        Axios.get(`${baseUrl}/api/v1/users`, {
           headers: {
             'Authorization': Authentication.getAuthenticationHeader(this)
           }
