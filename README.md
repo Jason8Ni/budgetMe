@@ -31,6 +31,6 @@ On the backend, there is a custom RESTful api that was designed using js, expres
 
 Currently, I am just trying to implement with standard HTTP requests. 
 
-In the future, will try to restructure this into a Single Page APplication (SPA) and use websockets... 
+In the future, will try to restructure this into a Single Page Application (SPA) and use websockets... 
 
 Authentication rn is done using JWT tokens (bearer) thru the js library, Passport
